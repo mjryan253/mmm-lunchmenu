@@ -1,0 +1,24 @@
+{
+  "name": "mmm-lunchmenu",
+  "version": "1.0.0",
+  "description": "A MagicMirror² module to display lunch menu information scraped from web sources",
+  "main": "MMM-LunchMenu.js",
+  "author": "",
+  "license": "MIT",
+  "keywords": [
+    "MagicMirror",
+    "MagicMirror²",
+    "module",
+    "lunch",
+    "menu",
+    "scraper"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
+

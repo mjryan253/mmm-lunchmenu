@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  menu-scraper:
+    build: ./scraper
+    container_name: mmm-lunchmenu-scraper
+    restart: unless-stopped
+    environment:
+      # Required: URL of the menu website to scrape
+      - MENU_URL=https://www.aacps.org/dining?filter=61292
+      
+      # Optional: Output path for the generated HTML file
+      - OUTPUT_PATH=/output/lunch_menu.html
+      
+      # Optional: Timezone for date calculations (default: America/New_York)
+      - TIMEZONE=America/New_York
+      
+      # Optional: Time to run daily scrape (24-hour format, default: 03:00)
+      - SCHEDULE_TIME=03:00
+      
+      # Optional: Show Monday's menu on weekends (default: true)
+      - WEEKEND_FALLBACK=true
+      
+      # Optional: Regex pattern to match day names in the menu
+      # Default matches: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+      - TARGET_DAY_PATTERN=(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)
+      
+      # Optional: Regex pattern to extract menu section (e.g., Lunch)
+      # This pattern captures content after "Lunch" until "salad bar" or end
+      - MENU_SECTION_PATTERN=Lunch(.*?)(?=salad bar|$)
+      
+      # Optional: Name to display for the menu section (default: Lunch)
+      - MENU_SECTION_NAME=Lunch
+    volumes:
+      # Mount a volume where MagicMirror can access the generated HTML
+      # This should match the menuUrl path in your MagicMirror config
+      - ./output:/output
+    # Optional: Set timezone in container
+    # Uncomment if you want the container to use a specific timezone
+    # environment:
+    #   - TZ=America/New_York
+
