@@ -1,6 +1,8 @@
 # MMM-LunchMenu
 
-A MagicMirror² module that displays lunch menu information scraped from web sources. This module works with an external Docker-based scraper service that fetches menu data from websites and generates formatted HTML for display.
+A MagicMirror² module that displays lunch menu information scraped from web sources such as county school dining/food schedule pages. This module works with an external Docker-based scraper service that fetches menu data from websites and generates formatted HTML for display.
+
+> **Developer's Note:** This project arose from a want to display the next day's lunch menu for our school district on our MagicMirror². Unfortunately our county's school menu site did not support iframes, and could not be dynamically linked to for parsing normally. This setup uses BeautifulSoup to render the page within a browser via Python, where it can then be parsed for the info. Once extracted, the container will use that saved information to create a simple HTML setup for the module to display. The setup reloads and scrapes at 3AM EST, since the link I used in my setup changes daily. Customize it for your needs based on the type of info and page you'll be using.
 
 ## Features
 
@@ -10,9 +12,11 @@ A MagicMirror² module that displays lunch menu information scraped from web sou
 - **Lightweight**: Uses simple HTTP requests (no browser automation needed)
 - **Beautiful Display**: Clean HTML output styled for MagicMirror²
 
-## Screenshot
+## Screenshots
 
-Example of MMM-LunchMenu displaying a school lunch menu
+<img src="docs/web-source.png" alt="Scraper Source" width="400"> → <img src="docs/module-visual-finished.png" alt="Magic Mirror Display" width="400">
+
+The scraper captures the marked lunch section from the website (left) and displays it in the Magic Mirror module (right).
 
 ## Installation
 
@@ -22,7 +26,7 @@ In your MagicMirror² `modules` directory:
 
 ```bash
 cd ~/MagicMirror/modules
-git clone [YOUR_REPO_URL] MMM-LunchMenu
+git clone https://github.com/mjryan253/mmm-lunchmenu.git MMM-LunchMenu
 cd MMM-LunchMenu
 ```
 

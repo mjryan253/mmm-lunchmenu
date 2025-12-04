@@ -14,7 +14,7 @@ Get MMM-LunchMenu up and running in 5 minutes!
 
 ```bash
 cd ~/MagicMirror/modules
-git clone [YOUR_REPO_URL] MMM-LunchMenu
+git clone https://github.com/mjryan253/mmm-lunchmenu.git MMM-LunchMenu
 ```
 
 ### 2. Set Up the Scraper
